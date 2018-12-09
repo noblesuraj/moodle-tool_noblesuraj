@@ -38,8 +38,8 @@ use stdClass;
  */
 
 class index_page implements renderable, templatable {
-    /** @var object $data - data objects to show how to pass data to a template. */
-    var $data = null;
+    // @var object $data - data objects to show how to pass data to a template.
+    private $data = null;
 
     public function __construct($data) {
         $this->data = $data;
