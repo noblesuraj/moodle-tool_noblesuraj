@@ -15,17 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version details.
  *
  * @package    tool_noblesuraj -- test plugin for moodle development course
  * @copyright  2018 Suraj Kumar
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+require_once(__DIR__ . '/../../../config.php');
+$url = new moodle_url('/admin/tool/noblesuraj/index.php');
+$PAGE->set_context(context_system::instance());
+$PAGE->set_url($url);
+$PAGE->set_pagelayout('report');
+$PAGE->set_title('Hello to the NobleSuraj');
+$PAGE->set_heading(get_string('pluginheading', 'tool_noblesuraj'));
 
-defined('MOODLE_INTERNAL') || die();
+//echo $OUTPUT->header();
 
-$plugin->version   = 2018071201; // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2018050800; // Requires this Moodle version.
-$plugin->component = 'tool_noblesuraj'; // Full name of the plugin (used for diagnostics).
-$plugin->release  = 'v1.1';
-$plugin->maturity = MATURITY_ALPHA;
+echo get_string('helloworld', 'tool_noblesuraj');
+
+//echo $OUTPUT->footer();

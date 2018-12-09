@@ -23,3 +23,7 @@
  */
 
 $string['pluginname'] = 'NOBLESURAJ for TRAVIS CI';
+$string['pluginheading'] = 'Welcome to NOBLESURAJ';
+$string['helloworld'] = 'Hello World';
+
+
