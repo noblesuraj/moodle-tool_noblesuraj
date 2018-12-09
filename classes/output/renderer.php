@@ -20,30 +20,22 @@
  * @copyright  2018 Suraj Kumar
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+namespace tool_noblesuraj\output;
 
-require_once(__DIR__ . '/../../../config.php');
-require_once($CFG->libdir.'/adminlib.php');
+defined('MOODLE_INTERNAL') || die;
 
-admin_externalpage_setup('noblesuraj');
+use plugin_renderer_base;
 
-// Set up the page.
-$title = get_string('pluginname', 'tool_noblesuraj');
-$pagetitle = get_string('pluginheading', 'tool_noblesuraj');
-$url = new moodle_url("/admin/tool/noblesuraj/index.php");
-$PAGE->set_url($url);
-$PAGE->set_title($title);
-$PAGE->set_heading($title);
-
-$output = $PAGE->get_renderer('tool_noblesuraj');
-
-echo $output->header();
-echo $output->heading($pagetitle);
-
-$data = new stdClass();
-$data->heading = $title;
-$data->sometext = get_string('helloworld', 'tool_noblesuraj');
-
-$renderable = new \tool_noblesuraj\output\index_page($data);
-echo $output->render($renderable);
-
-echo $output->footer();
+class renderer extends plugin_renderer_base {
+    /**
+     * Send data to template.
+     *
+     * @param index_page $indexpage
+     *
+     * @return string html for the page
+     */
+    public function render_index_page($indexpage) {
+        $data = $indexpage->export_for_template($this);
+        return parent::render_from_template('tool_noblesuraj/index_page', $data);
+    }
+}

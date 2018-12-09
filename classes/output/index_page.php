@@ -21,29 +21,38 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require_once(__DIR__ . '/../../../config.php');
-require_once($CFG->libdir.'/adminlib.php');
+namespace tool_noblesuraj\output;
 
-admin_externalpage_setup('noblesuraj');
+defined('MOODLE_INTERNAL') || die();
 
-// Set up the page.
-$title = get_string('pluginname', 'tool_noblesuraj');
-$pagetitle = get_string('pluginheading', 'tool_noblesuraj');
-$url = new moodle_url("/admin/tool/noblesuraj/index.php");
-$PAGE->set_url($url);
-$PAGE->set_title($title);
-$PAGE->set_heading($title);
+use renderable;
+use renderer_base;
+use templatable;
+use stdClass;
 
-$output = $PAGE->get_renderer('tool_noblesuraj');
+/**
+ * Get data to print on index page
+ *
+ * Class index_page
+ * @package tool_demo\output
+ */
 
-echo $output->header();
-echo $output->heading($pagetitle);
+class index_page implements renderable, templatable {
+    /** @var object $data - data objects to show how to pass data to a template. */
+    var $data = null;
 
-$data = new stdClass();
-$data->heading = $title;
-$data->sometext = get_string('helloworld', 'tool_noblesuraj');
+    public function __construct($data) {
+        $this->data = $data;
+    }
 
-$renderable = new \tool_noblesuraj\output\index_page($data);
-echo $output->render($renderable);
-
-echo $output->footer();
+    /**
+     * Export this data so it can be used as the context for a mustache template.
+     *
+     * @return stdClass
+     */
+    public function export_for_template(renderer_base $output) {
+        $data = new stdClass();
+        $data = $this->data;
+        return $data;
+    }
+}
