@@ -25,14 +25,10 @@
 }}
 
 
+<section>
+<h1>{{$sectionheading}}Default heading{{/sectionheading}}</h1>
+<h2>This is heading2</h2>
 <div>
-  <h4> Heading4: {{heading}}</h4>
-  {{#heading}}
-    <p>{{sometext}}</p>
-  {{/heading}}
+{{$content}}Content for section{{/content}}
 </div>
-
-{{< tool_noblesuraj/block_template1}}
-{{$sectionheading}}Latest News{{/sectionheading}}
-{{$content}}Nothing happened today - sorry!{{/content}}
-{{/tool_noblesuraj/block_template1}}
+</section>
