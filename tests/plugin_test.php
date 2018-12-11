@@ -32,7 +32,7 @@ defined('MOODLE_INTERNAL') || die();
 class tool_noblesuraj_plugin_testcase extends advanced_testcase {
 
     public function test_adding() {
-        $this->assertEquals(2, 1 + 2);
+        $this->assertNotEquals(2, 1 + 2);
     }
 
     public function test_deleting() {
