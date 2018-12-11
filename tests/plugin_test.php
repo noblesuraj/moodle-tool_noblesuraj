@@ -21,6 +21,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 /**
  * Class tool_noblesuraj_plugin_testcase
  * @group noblesuraj
@@ -30,7 +32,7 @@
 class tool_noblesuraj_plugin_testcase extends advanced_testcase {
 
     public function test_adding() {
-        $this->assertEquals(2, 1+2);
+        $this->assertEquals(2, 1 + 2);
     }
 
     public function test_deleting() {
